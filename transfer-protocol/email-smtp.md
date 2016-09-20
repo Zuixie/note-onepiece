@@ -131,5 +131,67 @@ openssl s_client -crlf -connect smtp.qq.com:465
 ```
 
 ## 5. Python 发送 mail
+
+[参考-SMTP Example](https://docs.python.org/2.7/library/smtplib.html#smtp-example)
+
+[参考-email: Examples](https://docs.python.org/3/library/email-examples.html)
+
+以下是发送python发送mail的两种方式，一种是直接自行构造文本结构，另一种是借助 MIMEText 构造信息结构
+
+```Python
+#! /usr/bin/env python
+# encoding=utf-8
+
+import smtplib
+
+mail_config = {
+    "hostname": "smtp.qq.com",
+    "username": "791706848@qq.com",
+    "password": "***********"
+}
+
+def send(toaddrs, subject, context, sender = mail_config['username']):
+    server = smtplib.SMTP_SSL(mail_config['hostname'])
+    # server.set_debuglevel(True) # for debug
+    server.ehlo('localhost')
+    server.login(mail_config['username'], mail_config['password'])
+    msg = ("Subject:%s\r\nFrom:%s\r\nTo:%s\r\n\r\n%s")%(subject, sender, ",".join(toaddrs), context)
+    server.sendmail(sender, toaddrs, msg)
+    server.quit()
+
+if __name__ == "__main__":
+    print 'Hello Send email'
+    send(['toname@163.com'],'test mail2','send by python with')
 ```
+
+```Python
+#! /usr/bin/env python
+# encoding=utf-8
+
+import smtplib
+
+mail_config = {
+    "hostname": "smtp.qq.com",
+    "username": "791706848@qq.com",
+    "password": "***********"
+}
+
+# use minetext create message info
+def send_mime(toaddrs, subject, context, sender = mail_config['username']):
+    from email.mime.text import MIMEText
+    msg = MIMEText(context, 'plain','utf-8')
+    msg['Subject'] = subject
+    msg['From'] = sender
+    msg['To'] = ','.join(toaddrs)
+
+    server = smtplib.SMTP_SSL(mail_config['hostname'])
+    # server.set_debuglevel(True) # for debug
+    server.ehlo('localhost')
+    server.login(mail_config['username'], mail_config['password'])
+    server.sendmail(sender, toaddrs, msg.as_string())
+    server.quit()
+
+if __name__ == "__main__":
+    print 'Hello Send email'
+    send_mime(['toname@163.com'],'test mail2','send by python with')
 ```
