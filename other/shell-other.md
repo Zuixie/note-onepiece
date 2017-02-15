@@ -1,4 +1,4 @@
-## 1. del amazon kindle book remote with javascript code
+## del amazon kindle book remote with javascript code
 ```javascript
 function test() {
     for (var i = 0; i < 10; i++){
@@ -19,6 +19,13 @@ function test() {
 }    
 ```
 
-## 2. xdg-open
+## xdg-open
 ```os.system("xdg-open %s &" % image_name )```类似双击操作，使用系统的默认程序打开指定文件
 
+## sshpass
+可以代替你在ssh连接服务器时输入密码
+
+## rsync
+同步
+
+## find file and grep

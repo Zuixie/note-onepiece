@@ -36,3 +36,50 @@ from moudlea import *
 [stackoverflow 对python metaclass的解释](http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python)
 
 ## django
+
+### 官方教程 part 1
+> 创建工程：```django-admin startproject mysite```
+>
+> 运行server：```python manage.py runserver```这里使用的server只能用于开发，不能用于正式的生产环境，正式的生产环境的部署是另一个点的内容
+>
+> 创建app：```python manage.py startapp polls```
+>
+> 1. 在polls下的views添加一个函数作为一个页面，函数的输入参数为HttpRquest，函数本身会作为参数，传递给url函数的第二个参数
+> 2. 创建urls.py作为路径与页面之间映射，其中路径的映射是通过url中的第一个参数，是一个正则表达式
+> 3. 将polls的路径映射至mysite中（通过urls.py,url函数），基础的页面就完成了。运行server后就可以进行访问
+
+### 官方教程 part 2 
+
+
+
+### 部署至生产环境
+WSGI
+
+
+## Flask
+因为Flask是一个轻量级的框架，所以对于这次的项目更加适用，以下会记录这次使用Flask学习到的点，更加详细的需要到官方网站进行查看。
+### debug模式和公网的访问
+```
+app.run(host='0.0.0.0') # 监听公网ip
+app.debug = True # 调试模式开启
+app.run()
+```
+### 路由```@app.route('/')```
+1. 可以将url中部分内容作为参数```@app.route('/user/<username>')``` 
+2. 访问一个结尾不带斜线的 URL 会被 Flask 重定向到带斜线的规范 URL 去。
+3. 通过url_for()构造url，可以更加好的管理url，同时它会帮你处理好特殊字符 ？？ 如何管理？
+4. http方法:GET, HEAD, POST, PUT, DELETE， OPTIONS ```@app.route('/login', methods=['GET', 'POST'])```
+
+### 静态文件
+```url_for('static', filename='style.css')```
+### 模板渲染，使用Jinja2
+1. 模板的继承
+> 模板继承允许你创建一个基础的骨架模板， 这个模板包含您网站的通用元素，并且定义子模板可以重载的 blocks 。
+2. 
+
+### 访问请求数据
+1. 环境局部变量，依旧不解？ 
+2. 请求对象request
+3. 文件上传
+...
+## 消息闪现
