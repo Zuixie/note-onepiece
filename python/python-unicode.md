@@ -3,6 +3,7 @@
 ## 关于 python 的字符集
 
 [Unicode HOWTO-Python2](https://docs.python.org/2.7/howto/unicode.html#python-2-x-s-unicode-support)
+
 [Unicode HOWTO-Python3](https://docs.python.org/3/howto/unicode.html)
 
 ### Unicode 和 utf-8

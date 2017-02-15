@@ -10,6 +10,8 @@ record notes with find One Piece
 - class 字节码
 - android 热补丁更新
 - Log
-- 公钥和私钥的关系，作用流程
+- shell ssh without password
 - android databingding 原理
 - 消息推送机制
+- python 打包模块 doing
+- (远程挂起后唤醒)[http://www.cnblogs.com/huashiyiqike/p/3614790.html]
